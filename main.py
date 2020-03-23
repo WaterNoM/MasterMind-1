@@ -19,11 +19,24 @@ def get_guess():
     return temp
 
 def is_correct(guess):
+    global close
+    
+    flag = True
+    close = 0
+    
     for i in range(4):
         if guess[i] != password[i]:
-            return False
+            flag = False
             
-    return True
+            if guess[i] in password:
+                close += 1
+            
+            print("_")
+            
+        else:
+            print(guess[i])
+            
+    return flag
 
 def main():
     # Create the password first
@@ -37,3 +50,5 @@ def main():
     print("Correct!!!!")
 
 main()
+
+
